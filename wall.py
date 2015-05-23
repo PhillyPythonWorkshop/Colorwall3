@@ -33,15 +33,19 @@ class Wall(object):
     PIXEL_WIDTH = 50
 
     def __init__(self, width, height):
+        #width and height default defined in run.py; can override w/ args
         self.width = width
         self.height = height
         self._tk_init()
+        #Create list object of pixels: (0, 0, 0) tuple for total number of pixels
         self.pixels = [(0, 0, 0) for i in range(self.width * self.height)]
 
     def _tk_init(self):
         self.root = Tk()
+        #Create new window (canvas), title it with dimensions
         self.root.title("ColorWall %d x %d" % (self.width, self.height))
-        self.root.resizable(0, 0)
+        #Can it be resized? Two arguments for height & width.  False = No; True = Yes 
+        self.root.resizable(False, False)
         self.frame = Frame(self.root, bd=5, relief=SUNKEN)
         self.frame.pack()
 

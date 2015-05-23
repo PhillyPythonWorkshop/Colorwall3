@@ -66,7 +66,8 @@ class Wall(object):
         self.canvas.delete(ALL)
         for x in range(len(self.pixels)):
             x_0 = (x % self.width) * self.PIXEL_WIDTH
-            y_0 = (x / self.width) * self.PIXEL_WIDTH
+            #Fix floor division for Python 3
+            y_0 = (x // self.width) * self.PIXEL_WIDTH
             x_1 = x_0 + self.PIXEL_WIDTH
             y_1 = y_0 + self.PIXEL_WIDTH
             hue = "#%02x%02x%02x" % self._get_rgb(self.pixels[x])
